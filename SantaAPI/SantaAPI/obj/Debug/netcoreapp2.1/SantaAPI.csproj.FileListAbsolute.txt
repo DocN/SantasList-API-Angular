@@ -1,0 +1,14 @@
+C:\ASP\A2\SantaAPI\SantaAPI\bin\Debug\netcoreapp2.1\SantaAPI.deps.json
+C:\ASP\A2\SantaAPI\SantaAPI\bin\Debug\netcoreapp2.1\SantaAPI.runtimeconfig.json
+C:\ASP\A2\SantaAPI\SantaAPI\bin\Debug\netcoreapp2.1\SantaAPI.runtimeconfig.dev.json
+C:\ASP\A2\SantaAPI\SantaAPI\bin\Debug\netcoreapp2.1\SantaAPI.dll
+C:\ASP\A2\SantaAPI\SantaAPI\bin\Debug\netcoreapp2.1\SantaAPI.pdb
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.csprojAssemblyReference.cache
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.csproj.CoreCompileInputs.cache
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.RazorAssemblyInfo.cache
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.RazorAssemblyInfo.cs
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.AssemblyInfoInputs.cache
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.AssemblyInfo.cs
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.RazorTargetAssemblyInfo.cache
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.dll
+C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.pdb

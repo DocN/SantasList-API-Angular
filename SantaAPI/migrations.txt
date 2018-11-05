@@ -1,0 +1,2 @@
+PM> add-migration "First Migration"
+PM> update-database
