@@ -10,7 +10,7 @@ namespace SantaAPI.Controllers
     [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class SantaListController : Controller
     {
         // GET api/values
         [HttpGet]
