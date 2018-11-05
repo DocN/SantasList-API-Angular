@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SantaAPI.Data;
 
 namespace SantaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20181105013100_ChildData Migration")]
+    partial class ChildDataMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -183,43 +185,6 @@ namespace SantaAPI.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("SantaAPI.DataModels.ChildData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("BirthDate");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("Country");
-
-                    b.Property<Guid>("CreatedBy");
-
-                    b.Property<DateTime>("DateTime");
-
-                    b.Property<string>("FirstName");
-
-                    b.Property<bool>("IsNaughty");
-
-                    b.Property<string>("LastName");
-
-                    b.Property<int>("Lattidue");
-
-                    b.Property<int>("Longitude");
-
-                    b.Property<string>("PostalCode");
-
-                    b.Property<string>("Province");
-
-                    b.Property<string>("Street");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ChildData");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

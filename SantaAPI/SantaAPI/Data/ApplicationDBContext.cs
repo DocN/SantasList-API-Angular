@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using SantaAPI.DataModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,8 @@ namespace SantaAPI.Data
 {
     public class ApplicationDBContext : IdentityDbContext<IdentityUser>
     {
+        public DbSet<ChildData> ChildData { get; set; }
+
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         { }
 
