@@ -35,7 +35,8 @@ namespace SantaAPI.Controllers
             var userSub = User.Claims.Where(c => c.Type == USERNAME_TYPE).FirstOrDefault();
             string username = userSub.Value;
 
-            var result = "";
+            var result = new Error();
+            result.SetNoUser();
             if (userSub != null)
             {
                 var user = await _userManager.FindByNameAsync(username);
@@ -44,14 +45,11 @@ namespace SantaAPI.Controllers
                 CurrentUser.Email = user.Email;
                 CurrentUser.Username = user.UserName;
                 CurrentUser.ChildData = _context.ChildData.Where(c => c.Id == user.Id).FirstOrDefault();
-
-                result = JsonConvert.SerializeObject(CurrentUser);
-                return result;  
+                return JsonConvert.SerializeObject(CurrentUser);  
             }
-            return result;
-
-
+            return JsonConvert.SerializeObject(result);
         }
+
         [HttpGet("claims")]
         public object Claims()
         {

@@ -3,6 +3,3 @@ PM> update-database
 
 PM> add-migration "ChildData Migration"
 PM> update-database
-
-add-migration "ChildData Fix ID v2"
-update-database
