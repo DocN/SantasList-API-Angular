@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.Security.Claims;
 using SantaAPI.Data;
 
 namespace SantaAPI
@@ -31,6 +32,7 @@ namespace SantaAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddDbContext<ApplicationDBContext>(
                 option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
@@ -57,7 +59,7 @@ namespace SantaAPI
                 {
                     ValidateIssuer = true,
                     ValidateAudience = true,
-                    ValidAudience = Configuration["Jwt:Site"],
+                    ValidAudience = Configuration["Jwt:Site"],      
                     ValidIssuer = Configuration["Jwt:Site"],
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:SigningKey"]))
                 };
