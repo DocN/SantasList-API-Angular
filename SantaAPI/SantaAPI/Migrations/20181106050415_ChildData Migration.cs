@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SantaAPI.Migrations
 {
-    public partial class FirstMigration : Migration
+    public partial class ChildDataMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -45,6 +45,30 @@ namespace SantaAPI.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ChildData",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    FirstName = table.Column<string>(nullable: true),
+                    LastName = table.Column<string>(nullable: true),
+                    BirthDate = table.Column<DateTime>(nullable: false),
+                    Street = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    Province = table.Column<string>(nullable: true),
+                    PostalCode = table.Column<string>(nullable: true),
+                    Country = table.Column<string>(nullable: true),
+                    Latitude = table.Column<int>(nullable: false),
+                    Longitude = table.Column<int>(nullable: false),
+                    IsNaughty = table.Column<bool>(nullable: false),
+                    DateTime = table.Column<DateTime>(nullable: false),
+                    CreatedBy = table.Column<Guid>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ChildData", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -219,6 +243,9 @@ namespace SantaAPI.Migrations
 
             migrationBuilder.DropTable(
                 name: "AspNetUserTokens");
+
+            migrationBuilder.DropTable(
+                name: "ChildData");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");

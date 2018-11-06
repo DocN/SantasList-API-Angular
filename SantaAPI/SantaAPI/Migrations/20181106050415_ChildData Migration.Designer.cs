@@ -10,8 +10,8 @@ using SantaAPI.Data;
 namespace SantaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20181105013333_ChildData Migration2")]
-    partial class ChildDataMigration2
+    [Migration("20181106050415_ChildData Migration")]
+    partial class ChildDataMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -189,9 +189,8 @@ namespace SantaAPI.Migrations
 
             modelBuilder.Entity("SantaAPI.DataModels.ChildData", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<DateTime>("BirthDate");
 
@@ -209,7 +208,7 @@ namespace SantaAPI.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("Lattidue");
+                    b.Property<int>("Latitude");
 
                     b.Property<int>("Longitude");
 

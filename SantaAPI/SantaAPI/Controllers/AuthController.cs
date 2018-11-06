@@ -10,20 +10,24 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using SantaAPI.Data;
+using SantaAPI.DataModels;
 using SantaAPI.ViewModels;
 
 namespace SantaAPI.Controllers
 {
-    [Authorize(Roles = "Admin")]
     public class AuthController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IConfiguration _configuration;
+        private readonly ApplicationDBContext _context;
+        private const bool DEFAULT_NAUGHTY = false;
 
-        public AuthController(UserManager<IdentityUser> userManager, IConfiguration configuration)
+        public AuthController(ApplicationDBContext context, UserManager<IdentityUser> userManager, IConfiguration configuration)
         {
             _userManager = userManager;
             _configuration = configuration;
+            _context = context;
         }
 
         // /register
@@ -31,21 +35,45 @@ namespace SantaAPI.Controllers
         [HttpPost]
         public async Task<ActionResult> InsertUser([FromBody] RegisterViewModel model)
         {
+            Guid newGuid = Guid.NewGuid();
             var user = new IdentityUser
             {
                 Email = model.Email,
                 UserName = model.Username,
-                SecurityStamp = Guid.NewGuid().ToString()
+                SecurityStamp = newGuid.ToString(),
             };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
                 await _userManager.AddToRoleAsync(user, "Child");
             }
-            
+
+            ChildData currentChild = getChildData(model, user.Id, newGuid);
+            _context.Add(currentChild);
+            await _context.SaveChangesAsync();
+
             return Ok(new { Username = user.UserName });
         }
 
+        private ChildData getChildData(RegisterViewModel model, string userid, Guid newGuid)
+        {
+            ChildData currentChildData = new ChildData();
+            currentChildData.FirstName = model.FirstName;
+            currentChildData.LastName = model.LastName;
+            currentChildData.Street = model.Street;
+            currentChildData.City = model.City;
+            currentChildData.Province = model.Province;
+            currentChildData.PostalCode = model.PostalCode;
+            currentChildData.Country = model.Country;
+            currentChildData.Latitude = model.Latitude;
+            currentChildData.Longitude = model.Longitude;
+            currentChildData.BirthDate = new DateTime(model.BirthYear, model.BirthMonth, model.BirthDay);
+            currentChildData.DateTime = DateTime.Now;
+            currentChildData.IsNaughty = DEFAULT_NAUGHTY;
+            currentChildData.Id = userid;
+            currentChildData.CreatedBy = newGuid;
+            return currentChildData;
+        }
 
         [Route("login")] // /login
         [HttpPost]

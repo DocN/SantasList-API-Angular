@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SantaAPI.Controllers
 {
-
+    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
     public class SantaListController : Controller
@@ -42,9 +42,8 @@ namespace SantaAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-        }
 
-        [Authorize]
+        }
         [HttpGet("claims")]
         public object Claims()
         {
