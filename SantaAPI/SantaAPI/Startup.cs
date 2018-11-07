@@ -17,6 +17,9 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using SantaAPI.Data;
+using Microsoft.AspNetCore.Cors.Infrastructure;
+using System.Net;
+using Microsoft.AspNetCore.Http;
 
 namespace SantaAPI
 {
@@ -32,6 +35,14 @@ namespace SantaAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Add Cors
+            services.AddCors(o => o.AddPolicy("AllAccessCors", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader()
+                       .AllowCredentials();
+            }));
             /*
             services.AddDbContext<ApplicationDBContext>(
                 option => option.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
@@ -85,9 +96,10 @@ namespace SantaAPI
 
             app.UseHttpsRedirection();
             app.UseAuthentication();
-            app.UseMvc();
 
+            app.UseMvc();
             Seed.Initialize(context, roleManager, userManager).Wait();// seed here
         }
+
     }
 }

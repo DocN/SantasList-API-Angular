@@ -13,13 +13,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RegisterComponent } from './register/register.component';
 
 //http
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { HttpModule } from '@angular/http';
 
 import { FormsModule } from '@angular/forms';
 
 //services
-import { URLServiceService } from './services/urlservice.service';
+import { APIURLService } from './services/apiurl.service';
 
 const appRoutes:Routes = [
   {
@@ -48,7 +48,7 @@ const appRoutes:Routes = [
     HttpModule, 
   ],
   providers: [
-    URLServiceService,
+    APIURLService
   ],
   bootstrap: [AppComponent]
 })

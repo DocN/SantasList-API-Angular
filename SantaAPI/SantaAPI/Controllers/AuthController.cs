@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -14,8 +16,11 @@ using SantaAPI.Data;
 using SantaAPI.DataModels;
 using SantaAPI.ViewModels;
 
+
 namespace SantaAPI.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class AuthController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -29,30 +34,34 @@ namespace SantaAPI.Controllers
             _configuration = configuration;
             _context = context;
         }
-
-        // /register
-        [Route("register")]
+        //register
+        [EnableCors("AllAccessCors")]
         [HttpPost]
         public async Task<ActionResult> InsertUser([FromBody] RegisterViewModel model)
         {
-            Guid newGuid = Guid.NewGuid();
-            var user = new IdentityUser
+            try
             {
-                Email = model.Email,
-                UserName = model.Username,
-                SecurityStamp = newGuid.ToString(),
-            };
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
+                Guid newGuid = Guid.NewGuid();
+                var user = new IdentityUser
+                {
+                    Email = model.Email,
+                    UserName = model.Username,
+                    SecurityStamp = newGuid.ToString(),
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _userManager.AddToRoleAsync(user, "Child");
+                }
+
+                ChildData currentChild = getChildData(model, user.Id, newGuid);
+                _context.Add(currentChild);
+                await _context.SaveChangesAsync();
+                return Ok(new { Username = user.UserName });
+            } catch (Exception e)
             {
-                await _userManager.AddToRoleAsync(user, "Child");
+                return Ok(new { Error = e.Message });
             }
-
-            ChildData currentChild = getChildData(model, user.Id, newGuid);
-            _context.Add(currentChild);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { Username = user.UserName });
         }
 
         private ChildData getChildData(RegisterViewModel model, string userid, Guid newGuid)
@@ -67,6 +76,7 @@ namespace SantaAPI.Controllers
             currentChildData.Country = model.Country;
             currentChildData.Latitude = model.Latitude;
             currentChildData.Longitude = model.Longitude;
+            Debug.WriteLine(model.FirstName);
             currentChildData.BirthDate = new DateTime(model.BirthYear, model.BirthMonth, model.BirthDay);
             currentChildData.DateTime = DateTime.Now;
             currentChildData.IsNaughty = DEFAULT_NAUGHTY;
@@ -75,8 +85,8 @@ namespace SantaAPI.Controllers
             return currentChildData;
         }
 
-        [Route("login")] // /login
-        [HttpPost]
+        [EnableCors("AllAccessCors")]
+        [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] LoginViewModel model)
         {
             var user = await _userManager.FindByNameAsync(model.Username);

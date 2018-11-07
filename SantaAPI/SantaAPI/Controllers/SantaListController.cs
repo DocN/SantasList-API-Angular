@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -26,6 +27,7 @@ namespace SantaAPI.Controllers
             _context = context;
         }
 
+        [EnableCors("AllAccessCors")]
         // GET api/values
         [HttpGet]
         public ActionResult<string> Get()
