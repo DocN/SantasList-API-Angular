@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -28,7 +29,7 @@ namespace SantaAPI.Controllers
             _userManager = userManager;
             _context = context;
         }
-
+        [EnableCors("AllAccessCors")]
         [HttpGet]
         public async Task<object> UserDataAsync()
         {
@@ -50,6 +51,7 @@ namespace SantaAPI.Controllers
             return JsonConvert.SerializeObject(result);
         }
 
+        [EnableCors("AllAccessCors")]
         [HttpGet("claims")]
         public object Claims()
         {

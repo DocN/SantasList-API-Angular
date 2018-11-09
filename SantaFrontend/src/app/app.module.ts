@@ -23,6 +23,8 @@ import { APIURLService } from './services/apiurl.service';
 import { RegisterSuccessComponent } from './register/register-success/register-success.component';
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserSettingsComponent } from './dashboard/user-settings/user-settings.component';
+
 
 const appRoutes:Routes = [
   {
@@ -36,7 +38,7 @@ const appRoutes:Routes = [
   {
     path:'register/success',
     component: RegisterSuccessComponent
-  }
+  },
   {
     path:'login',
     component: LoginComponent
@@ -56,6 +58,7 @@ const appRoutes:Routes = [
     RegisterSuccessComponent,
     LoginComponent,
     DashboardComponent,
+    UserSettingsComponent,
   ],
   imports: [
     BrowserModule,

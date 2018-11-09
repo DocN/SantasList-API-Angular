@@ -89,7 +89,6 @@ namespace SantaAPI.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] LoginViewModel model)
         {
-            Debug.WriteLine("here" + model.Username);
             var user = await _userManager.FindByNameAsync(model.Username);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {

@@ -8,11 +8,21 @@
         <div class="navItem pull-left">
           <a class="link" href="#">Home</a> 
         </div>
-        <div class="navItem pull-left">
-          <a class="link" href="#/register">Register</a> 
+        <div class="notLogged" *ngIf="this.SessionDataService.loggedIn == false">
+          <div class="navItem pull-left">
+            <a class="link" href="#/register">Register</a> 
+            </div>
+          <div class="navItem pull-left">
+            <a class="link" href="#/login">Login</a> 
           </div>
-        <div class="navItem pull-left">
-          <a class="link" href="#/login">Login</a> 
+        </div>
+        <div class="logged" *ngIf="this.SessionDataService.loggedIn == true">
+          <div class="navItem pull-left">
+            <a class="link" href="#/dashboard">Dashboard</a> 
+          </div>
+          <div class="navItem pull-left"> 
+            <a class="link" href="#"(click)="this.SessionDataService.logout()">Logout</a> 
+          </div>
         </div>
       </div>
     </div>
