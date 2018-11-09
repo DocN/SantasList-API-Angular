@@ -38,9 +38,11 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         (res) => {
           console.log(res);
+          if(res["response"] == true) {
+            this.router.navigate(['/register/success']);
+          }
         },
         err => {
-          console.log(err);
           console.log(err);
           //finish loading
         }

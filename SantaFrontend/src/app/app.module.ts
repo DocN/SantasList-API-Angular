@@ -20,6 +20,9 @@ import { FormsModule } from '@angular/forms';
 
 //services
 import { APIURLService } from './services/apiurl.service';
+import { RegisterSuccessComponent } from './register/register-success/register-success.component';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes:Routes = [
   {
@@ -29,6 +32,18 @@ const appRoutes:Routes = [
   {
     path: 'register',
     component: RegisterComponent,
+  },
+  {
+    path:'register/success',
+    component: RegisterSuccessComponent
+  }
+  {
+    path:'login',
+    component: LoginComponent
+  },
+  {
+    path:'dashboard',
+    component: DashboardComponent
   }
 ];
 
@@ -37,7 +52,10 @@ const appRoutes:Routes = [
     AppComponent,
     MainPageComponent,
     NavbarComponent,
-    RegisterComponent
+    RegisterComponent,
+    RegisterSuccessComponent,
+    LoginComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

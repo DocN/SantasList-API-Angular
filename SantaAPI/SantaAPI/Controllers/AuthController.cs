@@ -57,10 +57,10 @@ namespace SantaAPI.Controllers
                 ChildData currentChild = getChildData(model, user.Id, newGuid);
                 _context.Add(currentChild);
                 await _context.SaveChangesAsync();
-                return Ok(new { Username = user.UserName });
+                return Ok(new { Username = user.UserName, response=true });
             } catch (Exception e)
             {
-                return Ok(new { Error = e.Message });
+                return Ok(new { Error = e.Message, response=false });
             }
         }
 
@@ -89,6 +89,7 @@ namespace SantaAPI.Controllers
         [HttpPost("login")]
         public async Task<ActionResult> Login([FromBody] LoginViewModel model)
         {
+            Debug.WriteLine("here" + model.Username);
             var user = await _userManager.FindByNameAsync(model.Username);
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {

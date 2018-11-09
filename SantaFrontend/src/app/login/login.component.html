@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class="container marginTop20">
+  <div class="row">
+    <div class="col-3"></div>
+    <div class="col-6">
+        <mdb-card>
+          <mdb-card-body>
+            <div class="container-fluid loginBox">
+              <div class="row">
+                <div class="col-12">
+                  <img class="seal" src="../../assets/Images/funny_santa_claus_christmas_stamp_of_approval_classic_round_sticker-r26e41d1bb39d4089ace473995f47d7f4_v9wth_8byvr_540.jpg">
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <div class="rowSpace"></div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <form>
+                    <div class="form-group">
+                      <label>Email: </label>
+                      <input name="Email" [(ngModel)]="loginModel.Email" #Email="ngModel" type="email" class="form-control" id="Email" required>
+                    </div>
+                    <div class="form-group">
+                      <label>Password: </label>
+                      <input name="Password" [(ngModel)]="loginModel.Password" #Password="ngModel" type="password" class="form-control" id="Password" required>
+                    </div>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-12">
+                          <div class="rowSpace"></div>
+                        </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-3"></div>
+                          <div class="col-6"><button class="textCenter btn btn-success" (click)="login()">Login</button></div>
+                          <div class="col-3"></div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </mdb-card-body>
+        </mdb-card>
+    </div>
+    <div class="col-3"></div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ export class APIURLService {
   public RegisterURL = "https://localhost:44382/api/auth";
   public test = "https://localhost:44382/api/auth";
   public UserDataURL = this.domain + "api/santalist/";
+  public loginURL = "https://localhost:44382/api/auth/login";
   constructor() { 
 
   }
