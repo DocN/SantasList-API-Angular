@@ -24,6 +24,9 @@ namespace SantaAPI.DataModels
         public string Username { set; get; }
         public string Email { set; get; }
 
+        public string BDay { set; get; }
+        public string BMonth { set; get; }
+        public string BYear { set; get; }
         public ChildData ChildData { set; get; }
     }
 }

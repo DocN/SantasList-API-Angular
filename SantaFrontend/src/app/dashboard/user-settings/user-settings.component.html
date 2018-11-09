@@ -1,13 +1,76 @@
 <div class="container">
   <div class="row">
-    <div class="col-2"></div>
-    <div class="col-8">
+    <div class="col-12">
         <mdb-card>
           <mdb-card-body>
             <h1 class="textCenter">User Settings</h1>
-          </mdb-card-body>
-        </mdb-card>
+            <form>
+              <div class="form-group">
+                <label for="name">Email</label>
+                <input name="Email" [(ngModel)]="this.SessionDataService.userData.Email" #Email="ngModel" type="email" class="form-control" id="Email" required readonly>
+              </div>
+              <div class="form-group">
+                <label for="name">Username</label>
+                <input name="Username" [(ngModel)]="this.SessionDataService.userData.Username" #Username="ngModel" ype="text" class="form-control" id="Username" readonly required>
+              </div>
+              <div class="form-group">
+                <label for="FirstName">First Name</label>
+                <input name="FirstName" [(ngModel)]="this.SessionDataService.userData.ChildData.FirstName" #FirstName="ngModel" type="text" class="form-control" id="FirstName" required>
+              </div>
+            <div class="form-group">
+              <label for="LastName">Last Name</label>
+              <input name="LastName" [(ngModel)]="this.SessionDataService.userData.ChildData.LastName" #LastName="ngModel" type="text" class="form-control" id="LastName" required>
+            </div>
+            <div class="form-group">
+              <label for="Street">Street</label>
+              <input name="Street" [(ngModel)]="this.SessionDataService.userData.ChildData.Street" #Street="ngModel" type="text" class="form-control" id="Street" required>
+            </div>
+            <div class="form-group">
+              <label for="City">City</label>
+              <input name="City" [(ngModel)]="this.SessionDataService.userData.ChildData.City" #City="ngModel" type="text" class="form-control" id="City" required>
+            </div>
+            <div class="form-group">
+              <label for="Province">Province</label>
+              <input name="Province" [(ngModel)]="this.SessionDataService.userData.ChildData.Province" #Province="ngModel" type="text" class="form-control" id="Province" required>
+            </div>
+            <div class="form-group">
+              <label for="PostalCode">Postal Code</label>
+              <input name="PostalCode" [(ngModel)]="this.SessionDataService.userData.ChildData.PostalCode" #PostalCode="ngModel" type="text" class="form-control" id="PostalCode">
+            </div>
+            <div class="form-group">
+              <label for="Country">Country</label>
+              <input name="Country" [(ngModel)]="this.SessionDataService.userData.ChildData.Country" #Country="ngModel" type="text" class="form-control" id="Country">
+            </div>
+            <div class="form-group">
+              <label for="Latitude">Latitude</label>
+              <input name="Latitude" [(ngModel)]="this.SessionDataService.userData.ChildData.Latitude" #Latitude="ngModel" type="number" class="form-control" id="Latitude">
+            </div>
+            <div class="form-group">
+              <label for="Longitude">Longitude</label>
+              <input name="Longitude" [(ngModel)]="this.SessionDataService.userData.ChildData.Longitude" #Longitude="ngModel" type="number" class="form-control" id="Longitude">
+            </div>
+            <div class="form-group">
+              <div class="container-fluid nopadding">
+                <div class="row">
+                  <div class="col-4 centerText">
+                      <label for="BDate">Birth Day</label>
+                      <input name="BDate" [(ngModel)]="this.SessionDataService.userData.BDay" #BDate="ngModel" type="number" min=1 max=31 class="form-control" id="BDay">
+                  </div>
+                  <div class="col-4 centerText">
+                      <label for="BMonth">Birth Month</label>
+                      <input name="BMonth" [(ngModel)]="this.SessionDataService.userData.BMonth" #BMonth="ngModel" type="number" min=1 max=12 class="form-control" id="BMonth">
+                  </div>
+                  <div class="col-4 centerText">
+                      <label for="BYear">Birth Year</label>
+                      <input name="BYear" [(ngModel)]="this.SessionDataService.userData.BYear" #BYear="ngModel" type="number" min=1 max=2018 class="form-control" id="BYear">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success" (click)="registerUser()">Register</button>
+          </form>
+        </mdb-card-body>
+      </mdb-card>
     </div>
-    <div class="col-2"></div>
   </div>
 </div>

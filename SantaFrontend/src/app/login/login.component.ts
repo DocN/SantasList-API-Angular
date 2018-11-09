@@ -18,5 +18,4 @@ export class LoginComponent implements OnInit {
   login() {
     this.SessionDataService.login(this.loginModel);
   }
-
 }

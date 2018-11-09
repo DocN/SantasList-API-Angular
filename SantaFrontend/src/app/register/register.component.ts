@@ -12,7 +12,7 @@ import { APIURLService } from '../services/apiurl.service';
 export class RegisterComponent implements OnInit {
 
   private registerModel: any = {};
-
+  
   constructor(private router:Router, private http: HttpClient, private APIURLService: APIURLService) { 
 
   }
