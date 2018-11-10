@@ -30,9 +30,9 @@ namespace SantaAPI.ViewModels
         [Required]
         public string Country { get; set; }
         [Required]
-        public int Latitude { get; set; }
+        public double Latitude { get; set; }
         [Required]
-        public int Longitude { get; set; }
+        public double Longitude { get; set; }
 
         [Required]
         public int BirthMonth { get; set; }

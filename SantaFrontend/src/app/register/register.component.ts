@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { APIURLService } from '../services/apiurl.service';
+import { SessionDataService} from '../services/session-data.service'
 
 @Component({
   selector: 'app-register',
@@ -13,7 +14,7 @@ export class RegisterComponent implements OnInit {
 
   private registerModel: any = {};
   
-  constructor(private router:Router, private http: HttpClient, private APIURLService: APIURLService) { 
+  constructor(private router:Router, private http: HttpClient, private APIURLService: APIURLService, private SessionDataService:SessionDataService) { 
 
   }
 

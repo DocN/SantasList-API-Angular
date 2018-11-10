@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionDataService } from '../../services/session-data.service';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http';
+import { APIURLService} from '../../services/apiurl.service';
 
 @Component({
   selector: 'app-user-settings',
@@ -8,7 +12,7 @@ import {SessionDataService } from '../../services/session-data.service';
 })
 export class UserSettingsComponent implements OnInit {
   private userSetting: any = {};
-  constructor(private SessionDataService: SessionDataService) { }
+  constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService) { }
 
   ngOnInit() {
     this.getUserData();
@@ -18,34 +22,30 @@ export class UserSettingsComponent implements OnInit {
     this.SessionDataService.getUserData();
   }
 
-  setUserData() {
-    /*
-    let data = {"Id": this.registerModel.Email, "Username": this.registerModel.Username, 
-    "Password": this.registerModel.Password, "FirstName": this.registerModel.FirstName, 
-    "LastName": this.registerModel.LastName, "Street": this.registerModel.Street, 
-    "City": this.registerModel.City, "Province": this.registerModel.Province, 
-    "PostalCode": this.registerModel.PostalCode, "Country": this.registerModel.Country, 
-    "Latitude": this.registerModel.Latitude, "Longitude": this.registerModel.Longitude, 
-    "BirthMonth": this.registerModel.BMonth, "BirthDay": this.registerModel.BDate, 
-    "BirthYear": this.registerModel.BYear };
+  editUserData() {
+    let data = {"Id": this.SessionDataService.userData.ChildData.Id, "City": this.SessionDataService.userData.ChildData.City, 
+    "Country": this.SessionDataService.userData.ChildData.Country, "FirstName": this.SessionDataService.userData.ChildData.FirstName, 
+    "LastName": this.SessionDataService.userData.ChildData.LastName, "Lattitude": this.SessionDataService.userData.ChildData.Lattitude, 
+    "Longitude": this.SessionDataService.userData.ChildData.Longitude, "PostalCode": this.SessionDataService.userData.ChildData.PostalCode, 
+    "Province": this.SessionDataService.userData.ChildData.Province, "Street": this.SessionDataService.userData.ChildData.Street, 
+    "Latitude": this.SessionDataService.userData.ChildData.Latitude, "BirthMonth": this.SessionDataService.userData.BMonth, 
+    "BirthDay": this.SessionDataService.userData.BDay, "BirthYear": this.SessionDataService.userData.BYear };
+    console.log(data)
     const body = JSON.stringify(data);
     var config = {headers : {
-    "Content-Type": "application/json; charset = utf-8;"
+    "Content-Type": "application/json; charset = utf-8;",
+    "Authorization": "Bearer " + this.SessionDataService.JWTToken
     }
     }; 
-    this.http.post(this.APIURLService.RegisterURL, data, config)
+    this.http.put(this.APIURLService.EditUserDataURL, data, config)
     .subscribe(
     (res) => {
-    console.log(res);
-    if(res["response"] == true) {
-    this.router.navigate(['/register/success']);
-    }
+      console.log(res);
     },
     err => {
-    console.log(err);
-    //finish loading
+      console.log(err);
+      //finish loading
     }
     );
-    */
   }
 }

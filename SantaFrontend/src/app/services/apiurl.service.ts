@@ -11,6 +11,7 @@ export class APIURLService {
   public UserDataURL = this.domain + "api/santalist/";
   public loginURL = "https://localhost:44382/api/auth/login";
   public userDataURL = "https://localhost:44382/api/userdata/";
+  public EditUserDataURL = "https://localhost:44382/api/userdata/";
   constructor() { 
 
   }

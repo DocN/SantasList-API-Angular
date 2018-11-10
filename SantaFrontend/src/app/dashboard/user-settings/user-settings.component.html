@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="this.SessionDataService.loadedUserData == true">
   <div class="row">
     <div class="col-12">
         <mdb-card>
@@ -54,20 +54,20 @@
                 <div class="row">
                   <div class="col-4 centerText">
                       <label for="BDate">Birth Day</label>
-                      <input name="BDate" [(ngModel)]="this.SessionDataService.userData.BDay" #BDate="ngModel" type="number" min=1 max=31 class="form-control" id="BDay">
+                      <input name="BDate" [(ngModel)]="this.SessionDataService.userData.BDay" #BDate="ngModel" type="number" min=1 max=31 class="form-control" id="BDay" readonly>
                   </div>
                   <div class="col-4 centerText">
                       <label for="BMonth">Birth Month</label>
-                      <input name="BMonth" [(ngModel)]="this.SessionDataService.userData.BMonth" #BMonth="ngModel" type="number" min=1 max=12 class="form-control" id="BMonth">
+                      <input name="BMonth" [(ngModel)]="this.SessionDataService.userData.BMonth" #BMonth="ngModel" type="number" min=1 max=12 class="form-control" id="BMonth" readonly>
                   </div>
                   <div class="col-4 centerText">
                       <label for="BYear">Birth Year</label>
-                      <input name="BYear" [(ngModel)]="this.SessionDataService.userData.BYear" #BYear="ngModel" type="number" min=1 max=2018 class="form-control" id="BYear">
+                      <input name="BYear" [(ngModel)]="this.SessionDataService.userData.BYear" #BYear="ngModel" type="number" min=1 max=2018 class="form-control" id="BYear" readonly>
                   </div>
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-success" (click)="registerUser()">Register</button>
+            <button type="submit" class="btn btn-success" (click)="editUserData()">Submit Changes</button>
           </form>
         </mdb-card-body>
       </mdb-card>

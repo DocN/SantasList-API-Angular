@@ -91,7 +91,7 @@ namespace SantaAPI.Controllers
             currentChildData.Country = model.Country;
             currentChildData.FirstName = model.FirstName;
             currentChildData.LastName = model.LastName;
-            currentChildData.Latitude = model.Lattitude;
+            currentChildData.Latitude = model.Latitude;
             currentChildData.Longitude = model.Longitude;
             currentChildData.PostalCode = model.PostalCode;
             currentChildData.Province = model.Province;

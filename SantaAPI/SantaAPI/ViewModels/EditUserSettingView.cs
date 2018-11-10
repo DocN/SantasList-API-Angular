@@ -19,9 +19,9 @@ namespace SantaAPI.ViewModels
         [Required]
         public string LastName { set; get; }
         [Required]
-        public int Lattitude { set; get; }
+        public double Latitude { set; get; }
         [Required]
-        public int Longitude { set; get; }
+        public double Longitude { set; get; }
         [Required]
         public string PostalCode { set; get; }
         [Required]

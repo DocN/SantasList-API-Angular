@@ -10,7 +10,8 @@ export class SessionDataService {
   public JWTToken = "";
   public expire = "";
   public loggedIn = false;
-  public userData;
+  public userData : any;
+  public loadedUserData = false;
   constructor(private router:Router, private http: HttpClient, private APIURLService: APIURLService) {
 
   }
@@ -43,6 +44,8 @@ export class SessionDataService {
     this.JWTToken = "";
     this.expire = "";
     this.loggedIn = false;
+    this.loadedUserData = false;
+    this.userData = '';
   }
 
   getUserData() {
@@ -60,6 +63,7 @@ export class SessionDataService {
     (res) => {
       console.log(res);
       this.userData = res;
+      this.loadedUserData = true;
     },
     err => {
     console.log(err);
