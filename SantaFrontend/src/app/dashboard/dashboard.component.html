@@ -1,2 +1,20 @@
 <app-navbar></app-navbar>
-<app-user-settings></app-user-settings>
+<div *ngIf="this.SessionDataService.loggedIn == true">
+    <div class="container">
+        <div class="row">
+            <div class="col-3">
+                <div class="">
+                    <h3 class="userNavHeader">Dashboard</h3>
+                </div>
+                <div class="UserNav">
+                    <h3 (click)="setUserSettingDash()">User Settings</h3>
+                </div>
+            </div>
+            <div class="col-9">
+                <div *ngIf="this.currentDashroute == 'usersettings'">
+                    <app-user-settings></app-user-settings>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

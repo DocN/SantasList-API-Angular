@@ -9,8 +9,8 @@ using SantaAPI.Data;
 namespace SantaAPI.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    [Migration("20181106093533_ChildData Migration")]
-    partial class ChildDataMigration
+    [Migration("20181110050852_First Migration")]
+    partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -201,9 +201,9 @@ namespace SantaAPI.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("Latitude");
+                    b.Property<double>("Latitude");
 
-                    b.Property<int>("Longitude");
+                    b.Property<double>("Longitude");
 
                     b.Property<string>("PostalCode");
 

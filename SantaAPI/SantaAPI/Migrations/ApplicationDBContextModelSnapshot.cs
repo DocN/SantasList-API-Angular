@@ -199,9 +199,9 @@ namespace SantaAPI.Migrations
 
                     b.Property<string>("LastName");
 
-                    b.Property<int>("Latitude");
+                    b.Property<double>("Latitude");
 
-                    b.Property<int>("Longitude");
+                    b.Property<double>("Longitude");
 
                     b.Property<string>("PostalCode");
 

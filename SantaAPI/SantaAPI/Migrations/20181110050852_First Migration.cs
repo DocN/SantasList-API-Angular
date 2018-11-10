@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SantaAPI.Migrations
 {
-    public partial class ChildDataMigration : Migration
+    public partial class FirstMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -59,8 +59,8 @@ namespace SantaAPI.Migrations
                     Province = table.Column<string>(nullable: true),
                     PostalCode = table.Column<string>(nullable: true),
                     Country = table.Column<string>(nullable: true),
-                    Latitude = table.Column<int>(nullable: false),
-                    Longitude = table.Column<int>(nullable: false),
+                    Latitude = table.Column<double>(nullable: false),
+                    Longitude = table.Column<double>(nullable: false),
                     IsNaughty = table.Column<bool>(nullable: false),
                     DateTime = table.Column<DateTime>(nullable: false),
                     CreatedBy = table.Column<Guid>(nullable: false)

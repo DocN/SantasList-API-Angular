@@ -31,6 +31,7 @@ export class SessionDataService {
       this.JWTToken = res["token"];
       this.expire = res["expiration"];
       this.loggedIn = true;
+      this.decodeToken(res['token']);
       this.router.navigate(['/dashboard']);
     },
     err => {
@@ -66,9 +67,19 @@ export class SessionDataService {
       this.loadedUserData = true;
     },
     err => {
-    console.log(err);
-    //finish loading
-    }
-    );
+      console.log(err);
+      //finish loading
+    });
+  }
+
+  decodeToken(token) {
+    console.log(token);
+    let jwt = token;
+
+    let jwtData = jwt.split('.')[1]
+    let decodedJwtJsonData = window.atob(jwtData)
+    let decodedJwtData = JSON.parse(decodedJwtJsonData)
+    console.log(decodedJwtData);
+    let isAdmin = decodedJwtData.admin
   }
 }
