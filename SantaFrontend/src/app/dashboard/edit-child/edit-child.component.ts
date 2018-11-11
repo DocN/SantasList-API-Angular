@@ -6,6 +6,7 @@ import {DashrouteService} from '../../services/dashroute.service';
 import { HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { S_IFREG } from 'constants';
 @Component({
   selector: 'app-edit-child',
   templateUrl: './edit-child.component.html',
@@ -13,6 +14,10 @@ import { Router } from '@angular/router';
 })
 export class EditChildComponent implements OnInit {
 
+  private currentChildData;
+  private loaded = false;
+  private showDeleteFrame = false;
+  private birthdate: any = {}; 
   constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService, private ManageChildService: ManageChildService, private DashrouteService:DashrouteService) { }
 
   ngOnInit() {
@@ -30,6 +35,11 @@ export class EditChildComponent implements OnInit {
     .subscribe(
     (res) => {
       console.log(res);
+      this.currentChildData = res;
+      this.birthdate.BDay = this.currentChildData.BirthDay;
+      this.birthdate.BMonth = this.currentChildData.BirthMonth;
+      this.birthdate.BYear = this.currentChildData.BirthYear;
+      this.loaded = true;
     },
     err => {
       console.log(err);
@@ -38,4 +48,12 @@ export class EditChildComponent implements OnInit {
     );
   }
 
+  showDelFrame() {
+    if(this.showDeleteFrame == true) {
+      this.showDeleteFrame = false;
+    }
+    else {
+      this.showDeleteFrame = true;
+    }
+  }
 }

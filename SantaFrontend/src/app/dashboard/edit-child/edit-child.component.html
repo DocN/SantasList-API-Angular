@@ -1,3 +1,86 @@
-<p>
-  edit-child works!
-</p>
+<div class="" *ngIf="this.loaded == true && this.SessionDataService.role =='Admin'">
+  <mdb-card>
+    <mdb-card-body>
+      <h1 class="textCenter">Edit Child</h1>
+      <form>
+        <div class="form-group">
+          <label for="name">Email</label>
+          <input name="Email" [(ngModel)]="this.currentChildData.Email" #Email="ngModel" type="email" class="form-control" id="Email" required readonly>
+        </div>
+        <div class="form-group">
+          <label for="name">Username</label>
+          <input name="Username" [(ngModel)]="this.currentChildData.Username" #Username="ngModel" ype="text" class="form-control" id="Username" readonly required>
+        </div>
+        <div class="form-group">
+          <label for="FirstName">First Name</label>
+          <input name="FirstName" [(ngModel)]="this.currentChildData.myChildData.FirstName" #FirstName="ngModel" type="text" class="form-control" id="FirstName" required>
+        </div>
+      <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input name="LastName" [(ngModel)]="this.currentChildData.myChildData.LastName" #LastName="ngModel" type="text" class="form-control" id="LastName" required>
+      </div>
+      <div class="form-group">
+        <label for="Street">Street</label>
+        <input name="Street" [(ngModel)]="this.currentChildData.myChildData.Street" #Street="ngModel" type="text" class="form-control" id="Street" required>
+      </div>
+      <div class="form-group">
+        <label for="City">City</label>
+        <input name="City" [(ngModel)]="this.currentChildData.myChildData.City" #City="ngModel" type="text" class="form-control" id="City" required>
+      </div>
+      <div class="form-group">
+        <label for="Province">Province</label>
+        <input name="Province" [(ngModel)]="this.currentChildData.myChildData.Province" #Province="ngModel" type="text" class="form-control" id="Province" required>
+      </div>
+      <div class="form-group">
+        <label for="PostalCode">Postal Code</label>
+        <input name="PostalCode" [(ngModel)]="this.currentChildData.myChildData.PostalCode" #PostalCode="ngModel" type="text" class="form-control" id="PostalCode">
+      </div>
+      <div class="form-group">
+        <label for="Country">Country</label>
+        <input name="Country" [(ngModel)]="this.currentChildData.myChildData.Country" #Country="ngModel" type="text" class="form-control" id="Country">
+      </div>
+      <div class="form-group">
+        <label for="Latitude">Latitude</label>
+        <input name="Latitude" [(ngModel)]="this.currentChildData.myChildData.Latitude" #Latitude="ngModel" type="number" class="form-control" id="Latitude">
+      </div>
+      <div class="form-group">
+        <label for="Longitude">Longitude</label>
+        <input name="Longitude" [(ngModel)]="this.currentChildData.myChildData.Longitude" #Longitude="ngModel" type="number" class="form-control" id="Longitude">
+      </div>
+      <div class="form-group">
+        <div class="container-fluid nopadding">
+          <div class="row">
+            <div class="col-4 centerText">
+                <label for="BDate">Birth Day</label>
+                <input name="BDate" [(ngModel)]="this.birthdate.BDay" #BDate="ngModel" type="number" min=1 max=31 class="form-control" id="BDay">
+            </div>
+            <div class="col-4 centerText">
+                <label for="BMonth">Birth Month</label>
+                <input name="BMonth" [(ngModel)]="this.birthdate.BMonth" #BMonth="ngModel" type="number" min=1 max=12 class="form-control" id="BMonth">
+            </div>
+            <div class="col-4 centerText">
+                <label for="BYear">Birth Year</label>
+                <input name="BYear" [(ngModel)]="this.birthdate.BYear" #BYear="ngModel" type="number" min=1 max=2018 class="form-control" id="BYear">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid deleteFrame" *ngIf="this.showDeleteFrame == true">
+        <div class="row">
+          <div class="col-12">
+            <h1>Are you sure you want to delete this child's contact information?</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <button type="submit" class="btn btn-success"(click)="deleteContact()">Yes</button>
+            <button type="submit" class="btn btn-danger"(click)="showConfirm()">No</button>
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" (click)="editUserData()">Submit Changes</button>
+      <button type="submit" class="btn btn-danger"(click)="showDelFrame()">Delete Contact Information</button>
+    </form>
+  </mdb-card-body>
+  </mdb-card>
+</div>

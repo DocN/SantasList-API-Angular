@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionDataService} from '../services/session-data.service';
-import  {DashrouteService} from '../services/dashroute.service'
+import  {DashrouteService} from '../services/dashroute.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',

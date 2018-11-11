@@ -17,7 +17,8 @@
                   <th scope="col">Latitude</th>
                   <th scope="col">Longitude</th>
                   <th scope="col">Birth</th>
-                  <th scope="col">Is Naughty?</th>
+                  <th scope="col">Naughty/Nice</th>
+                  <th scope="col">Options</th>
                 </tr>
               </thead>
               <tbody>
@@ -36,8 +37,9 @@
                   <td>
                     {{currentUser.BirthDate}}
                   </td>
-                  <td>
-                    {{currentUser.IsNaughty}}
+                  <td class="textCenter">
+                    <div class="redText" *ngIf="currentUser.IsNaughty == true"><i class="fa fa-check"></i> Naughty</div> 
+                    <div class="greenText" *ngIf="currentUser.IsNaughty == false"> <i class="fa fa-smile-o"></i> Nice</div> 
                   </td>
                   <td><div id="editChildData{{i}}" class="editUser" (click)="selectChildData($event)"><i class="fa fa-pencil fa-fw"></i> Edit Child</div></td>
                 </tr>
