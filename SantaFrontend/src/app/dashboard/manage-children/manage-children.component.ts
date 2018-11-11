@@ -3,6 +3,10 @@ import { HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import {SessionDataService} from '../../services/session-data.service';
 import {APIURLService} from '../../services/apiurl.service';
+import {ManageChildService } from '../../services/manage-child.service';
+import {DashrouteService} from '../../services/dashroute.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-manage-children',
   templateUrl: './manage-children.component.html',
@@ -12,7 +16,8 @@ export class ManageChildrenComponent implements OnInit {
 
   private loadedData;
   private userData;
-  constructor(private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService) { }
+
+  constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService, private ManageChildService: ManageChildService, private DashrouteService:DashrouteService) { }
 
   ngOnInit() {
     this.loadedData = false;
@@ -38,5 +43,16 @@ export class ManageChildrenComponent implements OnInit {
     }
     );
   }
+
+  selectChildData($event) {
+    var currentID = $event["srcElement"]["id"];
+    currentID = currentID.slice(13);
+    this.ManageChildService.selectedChild = currentID;
+    this.ManageChildService.selectedChildID = this.userData[currentID].Id;
+    console.log(this.ManageChildService.selectedChildID);
+    this.DashrouteService.currentDashroute = "editUser";
+  }
+
+
 
 }

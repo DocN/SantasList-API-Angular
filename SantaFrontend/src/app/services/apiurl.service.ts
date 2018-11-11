@@ -13,6 +13,7 @@ export class APIURLService {
   public userDataURL = "https://localhost:44382/api/userdata/";
   public EditUserDataURL = "https://localhost:44382/api/userdata/";
   public getUserDataSantaURL = "https://localhost:44382/api/santalist/";
+  public santaEditChildURL = "https://localhost:44382/api/santalist/editChild/";
   constructor() { 
 
   }

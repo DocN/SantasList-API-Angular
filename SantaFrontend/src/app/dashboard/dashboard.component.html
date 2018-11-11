@@ -15,12 +15,16 @@
                 </div>
             </div>
             <div class="col-9">
-                <div *ngIf="this.currentDashroute == 'usersettings'">
+                <div *ngIf="this.DashrouteService.currentDashroute == 'usersettings'">
                     <app-user-settings></app-user-settings>
                 </div>
-                <div *ngIf="this.currentDashroute == 'managechildren'">
+                <div *ngIf="this.DashrouteService.currentDashroute == 'managechildren'">
                     <app-manage-children></app-manage-children>
                 </div>
+                <div *ngIf="this.DashrouteService.currentDashroute == 'editUser'">
+                    <app-edit-child></app-edit-child>
+                </div>
+                
             </div>
         </div>
     </div>

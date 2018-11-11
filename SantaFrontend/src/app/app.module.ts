@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserSettingsComponent } from './dashboard/user-settings/user-settings.component';
 import { ManageChildrenComponent } from './dashboard/manage-children/manage-children.component';
+import { EditChildComponent } from './dashboard/edit-child/edit-child.component';
 
 
 const appRoutes:Routes = [
@@ -47,6 +48,10 @@ const appRoutes:Routes = [
   {
     path:'dashboard',
     component: DashboardComponent
+  },
+  {
+    path:'editChild',
+    component: EditChildComponent
   }
 ];
 
@@ -61,6 +66,7 @@ const appRoutes:Routes = [
     DashboardComponent,
     UserSettingsComponent,
     ManageChildrenComponent,
+    EditChildComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SessionDataService} from '../services/session-data.service';
+import  {DashrouteService} from '../services/dashroute.service'
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,18 +8,18 @@ import {SessionDataService} from '../services/session-data.service';
 })
 export class DashboardComponent implements OnInit {
   private currentDashroute =  "";
-  constructor(private SessionDataService:SessionDataService) { }
+  constructor(private SessionDataService:SessionDataService, private DashrouteService:DashrouteService) { }
 
   ngOnInit() {
-    this.currentDashroute = "usersettings";
+    this.DashrouteService.currentDashroute = "usersettings";
   }
 
   setUserSettingDash() {
-    this.currentDashroute = "usersettings";
+    this.DashrouteService.currentDashroute = "usersettings";
   }
 
   setManageChildrenDash() {
-    this.currentDashroute = "managechildren";
+    this.DashrouteService.currentDashroute = "managechildren";
   }
 
 }
