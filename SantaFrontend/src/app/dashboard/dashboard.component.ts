@@ -17,4 +17,8 @@ export class DashboardComponent implements OnInit {
     this.currentDashroute = "usersettings";
   }
 
+  setManageChildrenDash() {
+    this.currentDashroute = "managechildren";
+  }
+
 }

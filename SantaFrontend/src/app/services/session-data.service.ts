@@ -12,6 +12,8 @@ export class SessionDataService {
   public loggedIn = false;
   public userData : any;
   public loadedUserData = false;
+  private jwtType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
+  public role;
   constructor(private router:Router, private http: HttpClient, private APIURLService: APIURLService) {
 
   }
@@ -27,11 +29,10 @@ export class SessionDataService {
     this.http.post(this.APIURLService.loginURL, data, config)
     .subscribe(
     (res) => {
-      console.log(res);
       this.JWTToken = res["token"];
       this.expire = res["expiration"];
-      this.loggedIn = true;
       this.decodeToken(res['token']);
+      this.loggedIn = true;
       this.router.navigate(['/dashboard']);
     },
     err => {
@@ -73,13 +74,15 @@ export class SessionDataService {
   }
 
   decodeToken(token) {
-    console.log(token);
     let jwt = token;
-
     let jwtData = jwt.split('.')[1]
     let decodedJwtJsonData = window.atob(jwtData)
     let decodedJwtData = JSON.parse(decodedJwtJsonData)
     console.log(decodedJwtData);
+    if(decodedJwtData != null) {
+      this.role = decodedJwtData[this.jwtType];
+      console.log(this.role);
+    }
     let isAdmin = decodedJwtData.admin
   }
 }

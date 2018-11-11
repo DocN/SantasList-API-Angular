@@ -1,0 +1,50 @@
+<div class="container-fluid" *ngIf="this.loadedData == true && this.SessionDataService.role =='Admin'">
+  <mdb-card>
+    <mdb-card-body>
+      <div class="row">
+        <div class="col-12">
+            <h1 class="title">Child Manager</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">First Name</th>
+                  <th scope="col">Last Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">Latitude</th>
+                  <th scope="col">Longitude</th>
+                  <th scope="col">Birth</th>
+                  <th scope="col">Is Naughty?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let currentUser of userData;let i = index">
+                  <th scope="row">{{currentUser.FirstName}}</th>
+                  <td>{{currentUser.LastName}}</td>
+                  <td>
+                    {{currentUser.Street}} {{currentUser.City}} {{currentUser.Province}} {{currentUser.PostalCode}} {{currentUser.Country}}
+                  </td>
+                  <td>
+                    {{currentUser.Latitude}}
+                  </td>
+                  <td>
+                    {{currentUser.Longitude}}
+                  </td>
+                  <td>
+                    {{currentUser.BirthDate}}
+                  </td>
+                  <td>
+                    {{currentUser.IsNaughty}}
+                  </td>
+                  <td><div id="editUser{{i}}" class="editUser" (click)="selectCategory($event)"><i class="fa fa-pencil fa-fw"></i> Edit Category</div></td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+      </div>
+    </mdb-card-body>
+  </mdb-card>
+</div>

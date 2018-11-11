@@ -24,6 +24,7 @@ import { RegisterSuccessComponent } from './register/register-success/register-s
 import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserSettingsComponent } from './dashboard/user-settings/user-settings.component';
+import { ManageChildrenComponent } from './dashboard/manage-children/manage-children.component';
 
 
 const appRoutes:Routes = [
@@ -59,6 +60,7 @@ const appRoutes:Routes = [
     LoginComponent,
     DashboardComponent,
     UserSettingsComponent,
+    ManageChildrenComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,6 +12,7 @@ export class APIURLService {
   public loginURL = "https://localhost:44382/api/auth/login";
   public userDataURL = "https://localhost:44382/api/userdata/";
   public EditUserDataURL = "https://localhost:44382/api/userdata/";
+  public getUserDataSantaURL = "https://localhost:44382/api/santalist/";
   constructor() { 
 
   }

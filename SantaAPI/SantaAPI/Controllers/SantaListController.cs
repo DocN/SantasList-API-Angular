@@ -36,6 +36,7 @@ namespace SantaAPI.Controllers
             return JsonConvert.SerializeObject(allChildData);
         }
 
+        [EnableCors("AllAccessCors")]
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<ActionResult<string>> GetAsync(string id)
@@ -53,6 +54,7 @@ namespace SantaAPI.Controllers
         }
 
         // POST api/values
+        [EnableCors("AllAccessCors")]
         [HttpPost]
         public ActionResult<string> Post([FromBody] ChildDataViewModel model)
         {   
@@ -87,6 +89,7 @@ namespace SantaAPI.Controllers
         }
 
         // PUT api/values/5
+        [EnableCors("AllAccessCors")]
         [HttpPut("{id}")]
         public ActionResult<string> Put(string id, [FromBody] ChildDataViewModel model)
         {
@@ -116,6 +119,7 @@ namespace SantaAPI.Controllers
         }
 
         // DELETE api/values/5
+        [EnableCors("AllAccessCors")]
         [HttpDelete("{id}")]
         public ActionResult<string> Delete(string id)
         {
@@ -133,6 +137,7 @@ namespace SantaAPI.Controllers
             return JsonConvert.SerializeObject(msg);
         }
 
+        [EnableCors("AllAccessCors")]
         [HttpGet("claims")]
         public object Claims()
         {
