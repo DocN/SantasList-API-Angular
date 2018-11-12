@@ -26,6 +26,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserSettingsComponent } from './dashboard/user-settings/user-settings.component';
 import { ManageChildrenComponent } from './dashboard/manage-children/manage-children.component';
 import { EditChildComponent } from './dashboard/edit-child/edit-child.component';
+import { AddChildDataComponent } from './dashboard/add-child-data/add-child-data.component';
 
 
 const appRoutes:Routes = [
@@ -67,6 +68,7 @@ const appRoutes:Routes = [
     UserSettingsComponent,
     ManageChildrenComponent,
     EditChildComponent,
+    AddChildDataComponent,
   ],
   imports: [
     BrowserModule,

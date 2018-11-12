@@ -22,4 +22,8 @@ export class DashboardComponent implements OnInit {
     this.DashrouteService.currentDashroute = "managechildren";
   }
 
+  setAddChildDash() {
+    this.DashrouteService.currentDashroute = "addchildren";
+  }
+
 }

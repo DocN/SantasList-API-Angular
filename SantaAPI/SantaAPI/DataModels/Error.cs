@@ -14,6 +14,8 @@ namespace SantaAPI.DataModels
         private const string UNABLE_TO_EDIT = "Error unable to edit Child Data";
         private const string UNABLE_TO_DEL = "Error unable to delete child data";
         private const string UNABLE_TO_ADD = "Error unable to add new child data";
+        private const string UNABLE_TO_EDIT_CHILD = "Error santa wasn't able to edit this child data";
+
         public Error() { }
         public Error(string _message)
         {
@@ -43,6 +45,11 @@ namespace SantaAPI.DataModels
         public void UnableToAdd()
         {
             Message = UNABLE_TO_ADD;
+        }
+
+        public void UnableToEditChilData()
+        {
+            Message = UNABLE_TO_EDIT_CHILD;
         }
         
     }

@@ -67,6 +67,7 @@
                 </div>
               </div>
             </div>
+            <!-- delete Frame BEGIN -->
             <div class="container-fluid deleteFrame" *ngIf="this.showDeleteFrame == true">
               <div class="row">
                 <div class="col-12">
@@ -80,6 +81,9 @@
                 </div>
               </div>
             </div>
+            <!-- delete Frame END -->
+
+            <!-- Naughty nice Section BEGIN -->
             <div class="container-fluid naughtyFrame textAlignCenter" *ngIf="this.showNaughtyFrame == true">
               <div class="row">
                 <div class="col-12">
@@ -104,6 +108,7 @@
                 </div>
               </div>
             </div>
+            <!-- Naughty nice Section EMD-->
             <button type="submit" class="btn btn-success" (click)="editUserData()">Submit Changes</button>
             <button type="submit" class="btn btn-danger"(click)="showDelFrame()">Delete Contact Information</button>
             <button type="submit" class="btn btn-info" (click)="naughtyConfirm()">Set Naughty Status</button>

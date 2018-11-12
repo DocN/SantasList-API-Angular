@@ -9,6 +9,7 @@
                 <div class="UserNav">
                     <div class="adminNav" *ngIf="this.SessionDataService.role == 'Admin'">
                         <h3 (click)="setManageChildrenDash()">Manage Children</h3> 
+                        <h3 (click)="setAddChildDash()">Add Child Data</h3> 
                     </div>
                     <h3 (click)="setUserSettingDash()">User Settings</h3>
                 </div>
@@ -22,6 +23,9 @@
                 </div>
                 <div *ngIf="this.DashrouteService.currentDashroute == 'editUser'">
                     <app-edit-child></app-edit-child>
+                </div>
+                <div *ngIf="this.DashrouteService.currentDashroute == 'addchildren'">
+                    <app-add-child-data></app-add-child-data>
                 </div>
                 
             </div>

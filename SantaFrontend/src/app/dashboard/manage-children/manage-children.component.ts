@@ -46,7 +46,7 @@ export class ManageChildrenComponent implements OnInit {
 
   selectChildData($event) {
     var currentID = $event["srcElement"]["id"];
-    currentID = currentID.slice(13);
+    currentID = currentID.slice(6);
     this.ManageChildService.selectedChild = currentID;
     this.ManageChildService.selectedChildID = this.userData[currentID].Id;
     console.log(this.ManageChildService.selectedChildID);

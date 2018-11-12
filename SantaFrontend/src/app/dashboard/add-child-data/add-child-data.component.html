@@ -1,0 +1,97 @@
+<div class="container-fluid" *ngIf="this.loaded == true">
+  <div class="row">
+    <div class="col-12">
+      <mdb-card>
+          <!--Card content-->
+          <mdb-card-body>
+            <!--Title-->
+            <mdb-card-title> <h4 class="centerText">Add Contact Information For Child</h4> </mdb-card-title>
+            <div class="container-fluid">
+              <div class="row">
+                <h5>Available Users *Click to select a user</h5>
+              </div>
+              <div class="row">
+                <div class="col-12">
+                  <table class="table">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">UID</th>
+                          <th scope="col">Email</th>
+                          <th scope="col">Username</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let currentUser of availableUsers;let i = index">
+                          <th id="addUserID{{i}}" scope="row"(click)="selectedUser($event)">{{currentUser.UID}}</th>
+                          <td id="addUserEmail{{i}}" (click)="selectedUser($event)">{{currentUser.Email}}</td>
+                          <td id="addUserUsername{{i}}" (click)="selectedUser($event)">{{currentUser.Username}}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+            <form>
+            <div class="form-group">
+              <label for="FirstName">First Name</label>
+              <input name="FirstName" [(ngModel)]="registerModel.FirstName" #FirstName="ngModel" type="text" class="form-control" id="FirstName" required>
+            </div>
+            <div class="form-group">
+              <label for="LastName">Last Name</label>
+              <input name="LastName" [(ngModel)]="registerModel.LastName" #LastName="ngModel" type="text" class="form-control" id="LastName" required>
+            </div>
+            <div class="form-group">
+              <label for="Street">Street</label>
+              <input name="Street" [(ngModel)]="registerModel.Street" #Street="ngModel" type="text" class="form-control" id="Street" required>
+            </div>
+            <div class="form-group">
+              <label for="City">City</label>
+              <input name="City" [(ngModel)]="registerModel.City" #City="ngModel" type="text" class="form-control" id="City" required>
+            </div>
+  
+            <div class="form-group">
+              <label for="Province">Province</label>
+              <input name="Province" [(ngModel)]="registerModel.Province" #Province="ngModel" type="text" class="form-control" id="Province" required>
+            </div>
+            <div class="form-group">
+              <label for="PostalCode">Postal Code</label>
+              <input name="PostalCode" [(ngModel)]="registerModel.PostalCode" #PostalCode="ngModel" type="text" class="form-control" id="PostalCode">
+            </div>
+            <div class="form-group">
+              <label for="Country">Country</label>
+              <input name="Country" [(ngModel)]="registerModel.Country" #Country="ngModel" type="text" class="form-control" id="Country">
+            </div>
+            <div class="form-group">
+              <label for="Latitude">Latitude</label>
+              <input name="Latitude" [(ngModel)]="registerModel.Latitude" #Latitude="ngModel" type="number" class="form-control" id="Latitude">
+            </div>
+            <div class="form-group">
+              <label for="Longitude">Longitude</label>
+              <input name="Longitude" [(ngModel)]="registerModel.Longitude" #Longitude="ngModel" type="number" class="form-control" id="Longitude">
+            </div>
+            <div class="form-group">
+              <div class="container-fluid nopadding">
+                <div class="row">
+                  <div class="col-4 centerText">
+                      <label for="BDate">Birth Day</label>
+                      <input name="BDate" [(ngModel)]="registerModel.BDate" #BDate="ngModel" type="number" min=1 max=31 class="form-control" id="BDay">
+                  </div>
+                  <div class="col-4 centerText">
+                      <label for="BMonth">Birth Month</label>
+                      <input name="BMonth" [(ngModel)]="registerModel.BMonth" #BMonth="ngModel" type="number" min=1 max=12 class="form-control" id="BMonth">
+                  </div>
+                  <div class="col-4 centerText">
+                      <label for="BYear">Birth Year</label>
+                      <input name="BYear" [(ngModel)]="registerModel.BYear" #BYear="ngModel" type="number" min=1 max=2018 class="form-control" id="BYear">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success" (click)="registerUser()">Register</button>
+          </form>
+          </mdb-card-body>
+        </mdb-card>
+    </div>
+  </div>
+</div>
+

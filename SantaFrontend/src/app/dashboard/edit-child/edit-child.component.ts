@@ -77,6 +77,7 @@ export class EditChildComponent implements OnInit {
     .subscribe(
     (res) => {
       console.log(res);
+      this.DashrouteService.currentDashroute = "managechildren";
     },
     err => {
       console.log(err);
@@ -125,5 +126,28 @@ export class EditChildComponent implements OnInit {
 
   naughtyConfirm() {
     this.setNaughtyFrame();
+  }
+
+  deleteContact() {
+    let data = {};
+
+    const body = JSON.stringify(data);
+    var config = {headers : {
+    "Content-Type": "application/json; charset = utf-8;",
+    "Authorization": "Bearer " + this.SessionDataService.JWTToken
+    }
+    }; 
+    let deleteUrl = this.APIURLService.getUserDataSantaURL + this.currentChildData.UID;
+    this.http.delete(deleteUrl, config)
+    .subscribe(
+    (res) => {
+      console.log(res);
+      this.DashrouteService.currentDashroute = "managechildren";
+    },
+    err => {
+      console.log(err);
+      //finish loading
+    }
+    );
   }
 }
