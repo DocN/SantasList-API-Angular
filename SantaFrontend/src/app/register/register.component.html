@@ -14,7 +14,7 @@
         <mdb-card-body>
           <!--Title-->
           <mdb-card-title> <h4>Register For Santa's List</h4> </mdb-card-title>
-          <form>
+          <form ngNativeValidate>
             <div class="form-group">
               <label for="name">Email</label>
               <input name="Email" [(ngModel)]="registerModel.Email" #Email="ngModel" type="email" class="form-control" id="Email" required>

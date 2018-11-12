@@ -3,6 +3,16 @@
     <div class="col-12">
       <mdb-card>
         <mdb-card-body>
+            <h1 class="textCenter">Child Map</h1>
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-12">
+                  <agm-map [latitude]="lat" [longitude]="lng">
+                    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+                  </agm-map>
+                </div>
+              </div>
+            </div>
             <h1 class="textCenter">Edit Child</h1>
             <form>
               <div class="form-group">
@@ -77,7 +87,7 @@
               <div class="row">
                 <div class="col-12">
                   <button type="submit" class="btn btn-success"(click)="deleteContact()">Yes</button>
-                  <button type="submit" class="btn btn-danger"(click)="showConfirm()">No</button>
+                  <button type="submit" class="btn btn-danger"(click)="showDelFrame()">No</button>
                 </div>
               </div>
             </div>

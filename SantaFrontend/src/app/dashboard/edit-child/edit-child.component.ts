@@ -20,6 +20,8 @@ export class EditChildComponent implements OnInit {
   private showDeleteFrame = false;
   private showNaughtyFrame = false;
   private birthdate: any = {}; 
+  private lat;
+  private lng;
   constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService, private ManageChildService: ManageChildService, private DashrouteService:DashrouteService) { }
 
   ngOnInit() {
@@ -41,6 +43,8 @@ export class EditChildComponent implements OnInit {
       this.birthdate.BDay = this.currentChildData.BirthDay;
       this.birthdate.BMonth = this.currentChildData.BirthMonth;
       this.birthdate.BYear = this.currentChildData.BirthYear;
+      this.lat = this.currentChildData.myChildData.Latitude;
+      this.lng = this.currentChildData.myChildData.Longitude;
       this.loaded = true;
     },
     err => {

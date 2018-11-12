@@ -12,6 +12,7 @@ export class SessionDataService {
   public loggedIn = false;
   public userData : any;
   public loadedUserData = false;
+  public noUserData = false;
   private jwtType = "http://schemas.microsoft.com/ws/2008/06/identity/claims/role";
   public role;
   constructor(private router:Router, private http: HttpClient, private APIURLService: APIURLService) {
@@ -66,9 +67,11 @@ export class SessionDataService {
       console.log(res);
       this.userData = res;
       this.loadedUserData = true;
+      this.noUserData = false;
     },
     err => {
       console.log(err);
+      this.noUserData = true;
       //finish loading
     });
   }

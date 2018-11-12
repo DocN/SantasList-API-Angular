@@ -1,4 +1,4 @@
-<div class="container-fluid" *ngIf="this.loaded == true">
+<div class="container-fluid" *ngIf="this.loaded == true && this.successAdded == false && this.SessionDataService.role =='Admin'">
   <div class="row">
     <div class="col-12">
       <mdb-card>
@@ -12,26 +12,28 @@
               </div>
               <div class="row">
                 <div class="col-12">
-                  <table class="table">
-                      <thead class="thead-dark">
-                        <tr>
-                          <th scope="col">UID</th>
-                          <th scope="col">Email</th>
-                          <th scope="col">Username</th>
-                        </tr>
-                      </thead>
-                      <tbody *ngFor="let currentUser of availableUsers;let i = index">
-                          <tr id="{{currentUser.UID}}">
-                            <th id="addUserID{{i}}" scope="row"(click)="selectedUser(currentUser)">{{currentUser.UID}}</th>
-                            <td id="addUserEmail{{i}}" (click)="selectedUser(currentUser)">{{currentUser.Email}}</td>
-                            <td id="addUserUsername{{i}}" (click)="selectedUser(currentUser)">{{currentUser.Username}}</td>
+                  <div class="table-responsive">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">UID</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Username</th>
                           </tr>
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody *ngFor="let currentUser of availableUsers;let i = index">
+                            <tr id="{{currentUser.UID}}">
+                              <th id="addUserID{{i}}" scope="row"(click)="selectedUser(currentUser)">{{currentUser.UID}}</th>
+                              <td id="addUserEmail{{i}}" (click)="selectedUser(currentUser)">{{currentUser.Email}}</td>
+                              <td id="addUserUsername{{i}}" (click)="selectedUser(currentUser)">{{currentUser.Username}}</td>
+                            </tr>
+                        </tbody>
+                      </table>
+                    </div>
                 </div>
               </div>
             </div>
-            <form>
+            <form ngNativeValidate>
             <div class="form-group">
               <label for="FirstName">First Name</label>
               <input name="FirstName" [(ngModel)]="registerModel.FirstName" #FirstName="ngModel" type="text" class="form-control" id="FirstName" required>
@@ -95,3 +97,10 @@
   </div>
 </div>
 
+<div class="container-fluid" *ngIf="this.successAdded == true">
+  <div class="row">
+    <div class="col-12">
+      <h1>Successfully added contact information!</h1>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,7 @@ export class AddChildDataComponent implements OnInit {
   private availableUsers;
   private loaded = false;
   private selectedUserID;
+  private successAdded = false;
   constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService, private ManageChildService: ManageChildService, private DashrouteService:DashrouteService) { }
 
   ngOnInit() {
@@ -78,6 +79,7 @@ export class AddChildDataComponent implements OnInit {
     .subscribe(
     (res) => {
       console.log(res);
+      this.successAdded = true;
     },
     err => {
       console.log(err);

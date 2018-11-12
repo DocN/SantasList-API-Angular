@@ -44,11 +44,9 @@ export class ManageChildrenComponent implements OnInit {
     );
   }
 
-  selectChildData($event) {
-    var currentID = $event["srcElement"]["id"];
-    currentID = currentID.slice(6);
-    this.ManageChildService.selectedChild = currentID;
-    this.ManageChildService.selectedChildID = this.userData[currentID].Id;
+  selectChildData(currentUser) {
+    console.log(currentUser);
+    this.ManageChildService.selectedChildID = currentUser.Id;
     console.log(this.ManageChildService.selectedChildID);
     this.DashrouteService.currentDashroute = "editUser";
   }

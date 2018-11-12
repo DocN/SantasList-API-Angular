@@ -28,6 +28,8 @@ import { ManageChildrenComponent } from './dashboard/manage-children/manage-chil
 import { EditChildComponent } from './dashboard/edit-child/edit-child.component';
 import { AddChildDataComponent } from './dashboard/add-child-data/add-child-data.component';
 
+//maps
+import { AgmCoreModule } from '@agm/core';
 
 const appRoutes:Routes = [
   {
@@ -77,6 +79,9 @@ const appRoutes:Routes = [
     FormsModule,
     HttpClientModule,
     HttpModule, 
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBs_3vSdPPkJbPUH79M-jI7UIwKSCyptTQ'
+    })
   ],
   providers: [
     APIURLService
