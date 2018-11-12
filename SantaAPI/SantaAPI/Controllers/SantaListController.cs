@@ -31,12 +31,51 @@ namespace SantaAPI.Controllers
         [EnableCors("AllAccessCors")]
         // GET api/values
         [HttpGet]
-        public ActionResult<string> Get()
+        public async Task<ActionResult<string>> GetAsync()
         {
-            var allChildData = _context.ChildData.ToList();
-            return JsonConvert.SerializeObject(allChildData);
+            try
+            {
+                List<ExtraChild> childList = new List<ExtraChild>();
+
+                var allChildData = _context.ChildData.ToList();
+                foreach (var currentChildData in allChildData)
+                {
+                    ExtraChild currentExtraChild = CopyToModelExtraChild(currentChildData);
+                    IdentityUser currentUser = await _userManager.FindByIdAsync(currentChildData.Id);
+                    if(currentUser != null)
+                    {
+                        currentExtraChild.Username = currentUser.UserName;
+                        currentExtraChild.Email = currentUser.Email;
+                        childList.Add(currentExtraChild);
+                    }
+                }
+                return JsonConvert.SerializeObject(childList);
+            } catch(Exception e)
+            {
+                return JsonConvert.SerializeObject(e.Message);
+            }
+
         }
 
+        private ExtraChild CopyToModelExtraChild(ChildData currentChildData)
+        {
+            ExtraChild currentExtraChild = new ExtraChild();
+            currentExtraChild.Id = currentChildData.Id;
+            currentExtraChild.FirstName = currentChildData.FirstName;
+            currentExtraChild.LastName = currentChildData.LastName;
+            currentExtraChild.BirthDate = currentChildData.BirthDate;
+            currentExtraChild.Street = currentChildData.Street;
+            currentExtraChild.City = currentChildData.City;
+            currentExtraChild.Province = currentChildData.Province;
+            currentExtraChild.PostalCode = currentChildData.PostalCode;
+            currentExtraChild.Country = currentChildData.Country;
+            currentExtraChild.Latitude = currentChildData.Latitude;
+            currentExtraChild.Longitude = currentChildData.Longitude;
+            currentExtraChild.IsNaughty = currentChildData.IsNaughty;
+            currentExtraChild.DateTime = currentChildData.DateTime;
+            currentExtraChild.CreatedBy = currentChildData.CreatedBy;
+            return currentExtraChild;
+        }
         [EnableCors("AllAccessCors")]
         // GET api/values/5
         [HttpGet("{id}")]
@@ -223,22 +262,29 @@ namespace SantaAPI.Controllers
         [HttpPost("addChildData/{id}")]
         public ActionResult<string> addChildData(string id, [FromBody] AddChildDataViewModel model)
         {
-            ChildData newChildData = new ChildData();
-            newChildData.FirstName = model.FirstName;
-            newChildData.LastName = model.LastName;
-            newChildData.Street = model.Street;
-            newChildData.City = model.City;
-            newChildData.Province = model.Province;
-            newChildData.PostalCode = model.PostalCode;
-            newChildData.Country = model.Country;
-            newChildData.Latitude = model.Latitude;
-            newChildData.Longitude = model.Longitude;
-            DateTime birthday = new DateTime(model.BirthYear, model.BirthMonth, model.BirthDay);
-            newChildData.BirthDate = birthday;
-            newChildData.Id = id;
-            _context.ChildData.Add(newChildData);
-            _context.SaveChanges();
-            return Ok(new { response = "successfully added new child data" });
+            try
+            {
+                ChildData newChildData = new ChildData();
+                newChildData.FirstName = model.FirstName;
+                newChildData.LastName = model.LastName;
+                newChildData.Street = model.Street;
+                newChildData.City = model.City;
+                newChildData.Province = model.Province;
+                newChildData.PostalCode = model.PostalCode;
+                newChildData.Country = model.Country;
+                newChildData.Latitude = model.Latitude;
+                newChildData.Longitude = model.Longitude;
+                DateTime birthday = new DateTime(model.BirthYear, model.BirthMonth, model.BirthDay);
+                newChildData.BirthDate = birthday;
+                newChildData.Id = id;
+                _context.ChildData.Add(newChildData);
+                _context.SaveChanges();
+                return Ok(new { response = "successfully added new child data" });
+            } catch(Exception e)
+            {
+                return Ok(new { response ="Error " + e.Message });
+            }
+
         }
 
         [EnableCors("AllAccessCors")]

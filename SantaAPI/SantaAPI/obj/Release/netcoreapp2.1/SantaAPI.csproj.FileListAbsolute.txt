@@ -1,0 +1,15 @@
+C:\asp\A2\SantaAPI\SantaAPI\bin\Release\netcoreapp2.1\SantaAPI.deps.json
+C:\asp\A2\SantaAPI\SantaAPI\bin\Release\netcoreapp2.1\SantaAPI.runtimeconfig.json
+C:\asp\A2\SantaAPI\SantaAPI\bin\Release\netcoreapp2.1\SantaAPI.runtimeconfig.dev.json
+C:\asp\A2\SantaAPI\SantaAPI\bin\Release\netcoreapp2.1\SantaAPI.dll
+C:\asp\A2\SantaAPI\SantaAPI\bin\Release\netcoreapp2.1\SantaAPI.pdb
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.csprojAssemblyReference.cache
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.csproj.CoreCompileInputs.cache
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.RazorAssemblyInfo.cache
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.RazorAssemblyInfo.cs
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\UserSecretsAssemblyInfo.cs
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.AssemblyInfoInputs.cache
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.AssemblyInfo.cs
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.RazorTargetAssemblyInfo.cache
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.dll
+C:\asp\A2\SantaAPI\SantaAPI\obj\Release\netcoreapp2.1\SantaAPI.pdb

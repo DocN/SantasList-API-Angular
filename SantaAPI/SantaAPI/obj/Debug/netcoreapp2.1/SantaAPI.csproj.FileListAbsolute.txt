@@ -12,3 +12,4 @@ C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.AssemblyInfo.cs
 C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.RazorTargetAssemblyInfo.cache
 C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.dll
 C:\ASP\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\SantaAPI.pdb
+C:\asp\A2\SantaAPI\SantaAPI\obj\Debug\netcoreapp2.1\UserSecretsAssemblyInfo.cs
