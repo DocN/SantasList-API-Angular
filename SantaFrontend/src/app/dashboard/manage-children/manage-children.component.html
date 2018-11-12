@@ -38,7 +38,7 @@
                     {{currentUser.BirthDate}}
                   </td>
                   <td class="textCenter">
-                    <div class="redText" *ngIf="currentUser.IsNaughty == true"><i class="fa fa-check"></i> Naughty</div> 
+                    <div class="redText" *ngIf="currentUser.IsNaughty == true"><i class="fa fa-frown-o"></i> Naughty</div> 
                     <div class="greenText" *ngIf="currentUser.IsNaughty == false"> <i class="fa fa-smile-o"></i> Nice</div> 
                   </td>
                   <td><div id="editChildData{{i}}" class="editUser" (click)="selectChildData($event)"><i class="fa fa-pencil fa-fw"></i> Edit Child</div></td>

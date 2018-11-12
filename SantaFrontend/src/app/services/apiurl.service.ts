@@ -14,6 +14,7 @@ export class APIURLService {
   public EditUserDataURL = "https://localhost:44382/api/userdata/";
   public getUserDataSantaURL = "https://localhost:44382/api/santalist/";
   public santaEditChildURL = "https://localhost:44382/api/santalist/editChild/";
+  public santaNaughtyChildURL = "https://localhost:44382/api/santalist/naughty/";
   constructor() { 
 
   }

@@ -23,13 +23,13 @@ export class UserSettingsComponent implements OnInit {
   }
 
   editUserData() {
-    let data = {"Id": this.SessionDataService.userData.ChildData.Id, "City": this.SessionDataService.userData.ChildData.City, 
-    "Country": this.SessionDataService.userData.ChildData.Country, "FirstName": this.SessionDataService.userData.ChildData.FirstName, 
-    "LastName": this.SessionDataService.userData.ChildData.LastName, "Lattitude": this.SessionDataService.userData.ChildData.Lattitude, 
+    let data = {"Uid": this.SessionDataService.userData.ChildData.Id, "City": this.SessionDataService.userData.ChildData.City, 
+    "Country": this.SessionDataService.userData.ChildData.Country, "Firstname": this.SessionDataService.userData.ChildData.FirstName, 
+    "Lastname": this.SessionDataService.userData.ChildData.LastName, "Latitude": this.SessionDataService.userData.ChildData.Latitude, 
     "Longitude": this.SessionDataService.userData.ChildData.Longitude, "PostalCode": this.SessionDataService.userData.ChildData.PostalCode, 
     "Province": this.SessionDataService.userData.ChildData.Province, "Street": this.SessionDataService.userData.ChildData.Street, 
-    "Latitude": this.SessionDataService.userData.ChildData.Latitude, "BirthMonth": this.SessionDataService.userData.BMonth, 
-    "BirthDay": this.SessionDataService.userData.BDay, "BirthYear": this.SessionDataService.userData.BYear };
+    "BirthMonth": this.SessionDataService.userData.BMonth, "BirthDay": this.SessionDataService.userData.BDay, 
+    "BirthYear": this.SessionDataService.userData.BYear };
     console.log(data)
     const body = JSON.stringify(data);
     var config = {headers : {
@@ -37,7 +37,7 @@ export class UserSettingsComponent implements OnInit {
     "Authorization": "Bearer " + this.SessionDataService.JWTToken
     }
     }; 
-    this.http.put(this.APIURLService.EditUserDataURL, data, config)
+    this.http.put(this.APIURLService.santaEditChildURL, data, config)
     .subscribe(
     (res) => {
       console.log(res);

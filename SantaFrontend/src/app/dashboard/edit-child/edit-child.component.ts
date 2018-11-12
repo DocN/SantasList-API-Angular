@@ -17,6 +17,7 @@ export class EditChildComponent implements OnInit {
   private currentChildData;
   private loaded = false;
   private showDeleteFrame = false;
+  private showNaughtyFrame = false;
   private birthdate: any = {}; 
   constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService, private ManageChildService: ManageChildService, private DashrouteService:DashrouteService) { }
 
@@ -55,5 +56,74 @@ export class EditChildComponent implements OnInit {
     else {
       this.showDeleteFrame = true;
     }
+  }
+
+  editUserData() {
+    let data = {"Uid": this.currentChildData.UID, "Firstname": this.currentChildData.myChildData.FirstName, 
+    "Lastname": this.currentChildData.myChildData.LastName, "Street": this.currentChildData.myChildData.Street, 
+    "City": this.currentChildData.myChildData.Longitude, "Province": this.currentChildData.myChildData.Longitude, 
+    "PostalCode": this.currentChildData.myChildData.PostalCode, "Country": this.currentChildData.myChildData.Country, 
+    "Latitude": this.currentChildData.myChildData.Latitude, "Longitude": this.currentChildData.myChildData.Longitude, 
+    "BirthDay": this.birthdate.BDay, "BirthMonth": this.birthdate.BMonth, 
+    "BirthYear": this.birthdate.BYear};
+
+    const body = JSON.stringify(data);
+    var config = {headers : {
+    "Content-Type": "application/json; charset = utf-8;",
+    "Authorization": "Bearer " + this.SessionDataService.JWTToken
+    }
+    }; 
+    this.http.put(this.APIURLService.santaEditChildURL, data, config)
+    .subscribe(
+    (res) => {
+      console.log(res);
+    },
+    err => {
+      console.log(err);
+      //finish loading
+    }
+    );
+  }
+
+  setNaughtyTrue() {
+    this.editNaughtyStatus(true);
+  }
+  setNaughtyFalse() {
+    this.editNaughtyStatus(false);
+  }
+  editNaughtyStatus(newStatus) {
+    let data = {"IsNaughty": newStatus};
+
+    const body = JSON.stringify(data);
+    var config = {headers : {
+    "Content-Type": "application/json; charset = utf-8;",
+    "Authorization": "Bearer " + this.SessionDataService.JWTToken
+    }
+    }; 
+    let naughtyURL = this.APIURLService.santaNaughtyChildURL + this.currentChildData.UID;
+    this.http.post(naughtyURL, data, config)
+    .subscribe(
+    (res) => {
+      console.log(res);
+      this.currentChildData.myChildData.IsNaughty = newStatus;
+    },
+    err => {
+      console.log(err);
+      //finish loading
+    }
+    );
+  }
+
+  setNaughtyFrame() {
+    if(this.showNaughtyFrame == true) {
+      this.showNaughtyFrame = false;
+    }
+    else {
+      this.showNaughtyFrame = true;
+    }
+  }
+
+  naughtyConfirm() {
+    this.setNaughtyFrame();
   }
 }
