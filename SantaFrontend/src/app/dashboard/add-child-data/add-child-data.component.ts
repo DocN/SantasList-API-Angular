@@ -17,6 +17,7 @@ export class AddChildDataComponent implements OnInit {
   private registerModel: any = {};
   private availableUsers;
   private loaded = false;
+  private selectedUserID;
   constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService, private ManageChildService: ManageChildService, private DashrouteService:DashrouteService) { }
 
   ngOnInit() {
@@ -43,9 +44,45 @@ export class AddChildDataComponent implements OnInit {
     );
   }
 
-  selectedUser($event) {
-    var currentID = $event["srcElement"]["id"];
-    currentID = currentID.slice(13);
-    console.log(currentID);
+  selectedUser(event) {
+    console.log(event);
+    this.clearTables();
+    let tableRow = document.getElementById(event.UID);
+    this.selectedUserID = event.UID;
+    tableRow.className = "table-primary";
+  }
+  clearTables() {
+    for(let i =0; i < this.availableUsers.length; i++) {
+      let innerRow = document.getElementById(this.availableUsers[i].UID);
+      innerRow.className = "";
+    }
+  }
+
+  addUserChildData() {
+    let data = {"FirstName": this.registerModel.FirstName, 
+                "LastName": this.registerModel.LastName, "Street": this.registerModel.Street, 
+                "City": this.registerModel.City, "Province": this.registerModel.Province, 
+                "PostalCode": this.registerModel.PostalCode, "Country": this.registerModel.Country, 
+                "Latitude": this.registerModel.Latitude, "Longitude": this.registerModel.Longitude, 
+                "BirthMonth": this.registerModel.BMonth, "BirthDay": this.registerModel.BDate, 
+                "BirthYear": this.registerModel.BYear };
+    console.log(data)
+    const body = JSON.stringify(data);
+    let addURL = this.APIURLService.addChildDataURL + this.selectedUserID;
+    var config = {headers : {
+    "Content-Type": "application/json; charset = utf-8;",
+    "Authorization": "Bearer " + this.SessionDataService.JWTToken
+    }
+    }; 
+    this.http.post(addURL, data, config)
+    .subscribe(
+    (res) => {
+      console.log(res);
+    },
+    err => {
+      console.log(err);
+      //finish loading
+    }
+    );
   }
 }

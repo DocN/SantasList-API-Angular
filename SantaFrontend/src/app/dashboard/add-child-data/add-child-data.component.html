@@ -20,12 +20,12 @@
                           <th scope="col">Username</th>
                         </tr>
                       </thead>
-                      <tbody>
-                        <tr *ngFor="let currentUser of availableUsers;let i = index">
-                          <th id="addUserID{{i}}" scope="row"(click)="selectedUser($event)">{{currentUser.UID}}</th>
-                          <td id="addUserEmail{{i}}" (click)="selectedUser($event)">{{currentUser.Email}}</td>
-                          <td id="addUserUsername{{i}}" (click)="selectedUser($event)">{{currentUser.Username}}</td>
-                        </tr>
+                      <tbody *ngFor="let currentUser of availableUsers;let i = index">
+                          <tr id="{{currentUser.UID}}">
+                            <th id="addUserID{{i}}" scope="row"(click)="selectedUser(currentUser)">{{currentUser.UID}}</th>
+                            <td id="addUserEmail{{i}}" (click)="selectedUser(currentUser)">{{currentUser.Email}}</td>
+                            <td id="addUserUsername{{i}}" (click)="selectedUser(currentUser)">{{currentUser.Username}}</td>
+                          </tr>
                       </tbody>
                     </table>
                 </div>
@@ -87,7 +87,7 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-success" (click)="registerUser()">Register</button>
+            <button type="submit" class="btn btn-success" (click)="addUserChildData()">Add Contact Information to User</button>
           </form>
           </mdb-card-body>
         </mdb-card>

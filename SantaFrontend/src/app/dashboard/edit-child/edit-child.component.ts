@@ -6,7 +6,8 @@ import {DashrouteService} from '../../services/dashroute.service';
 import { HttpRequest, HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { S_IFREG } from 'constants';
+
+
 @Component({
   selector: 'app-edit-child',
   templateUrl: './edit-child.component.html',
