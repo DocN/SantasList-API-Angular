@@ -14,6 +14,7 @@ export class UserSettingsComponent implements OnInit {
   private userSetting: any = {};
   constructor(private router:Router, private http: HttpClient, private SessionDataService: SessionDataService, private APIURLService: APIURLService) { }
 
+ 
   ngOnInit() {
     this.getUserData();
   }

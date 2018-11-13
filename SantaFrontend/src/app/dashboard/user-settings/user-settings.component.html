@@ -75,7 +75,7 @@
   </div>
 </div>
 
-<div class="container-fluid">
+<div class="container-fluid" *ngIf="this.SessionDataService.noUserData == true">
   <div class="row">
     <div class="col-12">
       <h1>Error Santa has deleted your child data :( Please contact santa to fix this @ Santa@northpole.net </h1>
